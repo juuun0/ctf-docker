@@ -1,0 +1,11 @@
+service chall
+{
+	socket_type = stream
+	flags = REUSE
+	wait = no
+	protocol = tcp
+	user = root
+	disable = no
+	server = /root/chall.bin
+	port = 9929
+}
