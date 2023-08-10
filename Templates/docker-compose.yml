@@ -1,0 +1,20 @@
+services:
+  chall:
+      build: 
+        context: .
+        args:
+          - OS_VERSION=16.04
+          - DEBUGPORT=9929
+          - CHALLPORT=929
+      container_name: vuln
+      ports:
+        - "9929:9929" # for challenge
+        - "929:929" # for remote debugging
+      cap_add:
+        - SYS_PTRACE
+      security_opt:
+        - seccomp:unconfined
+
+networks:
+  default:
+    name: vulnNetwork

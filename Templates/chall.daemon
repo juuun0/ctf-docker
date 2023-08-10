@@ -7,5 +7,5 @@ service chall
 	user = root
 	disable = no
 	server = /root/chall.bin
-	port = 9929
+	port = DEBUGPORT
 }
