@@ -7,6 +7,6 @@ echo "[!] If challenge session is connected, gdbserver is run automatically..."
 while [[ 1 ]]; do
 	PID=$(pidof /root/chall.bin 2>/dev/null)
 	if [[ -n $PID ]]; then
-		gdbserver 0.0.0.0:929 --attach $PID 2>/dev/null
+		gdbserver 0.0.0.0:CHALLPORT --attach $PID 2>/dev/null
 	fi
 done

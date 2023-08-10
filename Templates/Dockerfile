@@ -1,7 +1,11 @@
-FROM ubuntu:16.04
+ARG OS_VERSION
+
+FROM ubuntu:$OS_VERSION
 MAINTAINER insp3ct0r_x
 
 ARG DEBIAN_FRONTEND=noninteractive
+ARG DEBUGPORT
+ARG CHALLPORT
 
 ENV TZ Asia/Seoul
 
@@ -17,8 +21,10 @@ WORKDIR /root/
 COPY chall.bin /root/
 RUN chmod 755 /root/chall.bin
 COPY chall.daemon /etc/xinetd.d/chall
-RUN echo "chall	9929/tcp" >> /etc/services
+RUN sed -i "s/DEBUGPORT/$DEBUGPORT/" /etc/xinetd.d/chall
+RUN echo "chall	$DEBUGPORT/tcp" >> /etc/services
 
 COPY ep.sh /root/
 RUN chmod 755 /root/ep.sh
+RUN sed -i "s/CHALLPORT/$CHALLPORT/" /root/ep.sh
 ENTRYPOINT ["/root/ep.sh"]
