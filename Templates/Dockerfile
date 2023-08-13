@@ -24,6 +24,8 @@ COPY chall.daemon /etc/xinetd.d/chall
 RUN sed -i "s/DEBUGPORT/$DEBUGPORT/" /etc/xinetd.d/chall
 RUN echo "chall	$DEBUGPORT/tcp" >> /etc/services
 
+COPY flag.txt /root/
+
 COPY ep.sh /root/
 RUN chmod 755 /root/ep.sh
 RUN sed -i "s/CHALLPORT/$CHALLPORT/" /root/ep.sh
