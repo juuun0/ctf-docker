@@ -3,7 +3,7 @@ services:
       build: 
         context: .
         args:
-          - OS_VERSION=16.04
+          - OS_VERSION=22.04
           - DEBUGPORT=9929
           - CHALLPORT=929
       container_name: vuln
